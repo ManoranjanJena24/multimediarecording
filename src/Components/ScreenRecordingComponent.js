@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import RecordRTC from 'recordrtc';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVideo, faMicrophone, faStop } from '@fortawesome/free-solid-svg-icons';
 import './ScreenRecordingComponent.css';
 
 const ScreenRecordingComponent = () => {
@@ -49,10 +51,10 @@ const ScreenRecordingComponent = () => {
         <div className="screen-recording-container">
             <h2>Screen Recording</h2>
             <button className="recording-button" onClick={startRecording} disabled={recording}>
-                Start Recording
+                <FontAwesomeIcon icon={faVideo} /> Start Recording
             </button>
             <button className="recording-button" onClick={stopRecording} disabled={!recording}>
-                Stop Recording
+                <FontAwesomeIcon icon={faStop} /> Stop Recording
             </button>
             <button className="toggle-button" onClick={toggleVideo}>
                 {videoEnabled ? 'Disable Video' : 'Enable Video'}

@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import RecordRTC from 'recordrtc';
-import './VideoRecordingComponent.css'; // Import your CSS file
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVideo, faMicrophone, faMicrophoneSlash, faStop } from '@fortawesome/free-solid-svg-icons';
+import './VideoRecordingComponent.css';
 
 const VideoRecordingComponent = () => {
     const [recording, setRecording] = useState(false);
@@ -14,7 +16,7 @@ const VideoRecordingComponent = () => {
         try {
             const constraints = {
                 video: true,
-                audio: audioEnabled, // Use the audioEnabled state here
+                audio: audioEnabled,
             };
 
             const stream = await navigator.mediaDevices.getUserMedia(constraints);
@@ -46,12 +48,13 @@ const VideoRecordingComponent = () => {
         <div className="recording-container">
             <h2>Video Recording</h2>
             <button className="recording-button" onClick={startRecording} disabled={recording}>
-                Start Recording
+                <FontAwesomeIcon icon={faVideo} /> Start Recording
             </button>
             <button className="recording-button" onClick={stopRecording} disabled={!recording}>
-                Stop Recording
+                <FontAwesomeIcon icon={faStop} /> Stop Recording
             </button>
-            <button className={audioEnabled ? 'recording-button' : 'recording-button disabled-button'} onClick={toggleAudio}>
+            <button className={`recording-button ${audioEnabled ? '' : 'disabled-button'}`} onClick={toggleAudio}>
+                {audioEnabled ? <FontAwesomeIcon icon={faMicrophone} /> : <FontAwesomeIcon icon={faMicrophoneSlash} />}{' '}
                 {audioEnabled ? 'Disable Audio' : 'Enable Audio'}
             </button>
             {recordedBlob && (

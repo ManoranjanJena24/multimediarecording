@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import RecordRTC from 'recordrtc';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMicrophone, faStop } from '@fortawesome/free-solid-svg-icons';
 import './AudioRecordingComponent.css';
 
 const AudioRecordingComponent = () => {
@@ -36,10 +38,10 @@ const AudioRecordingComponent = () => {
         <div className="audio-recording-container">
             <h2>Audio Recording</h2>
             <button className="recording-button" onClick={startRecording} disabled={recording}>
-                Start Recording
+                <FontAwesomeIcon icon={faMicrophone} /> Start Recording
             </button>
             <button className="recording-button" onClick={stopRecording} disabled={!recording}>
-                Stop Recording
+                <FontAwesomeIcon icon={faStop} /> Stop Recording
             </button>
             {recordedBlob && (
                 <audio controls src={URL.createObjectURL(recordedBlob)} />
