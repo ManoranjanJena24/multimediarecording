@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import RecordRTC from 'recordrtc';
+import './VideoRecordingComponent.css'; // Import your CSS file
 
 const VideoRecordingComponent = () => {
     const [recording, setRecording] = useState(false);
@@ -42,19 +43,19 @@ const VideoRecordingComponent = () => {
     };
 
     return (
-        <div>
+        <div className="recording-container">
             <h2>Video Recording</h2>
-            <button onClick={startRecording} disabled={recording}>
+            <button className="recording-button" onClick={startRecording} disabled={recording}>
                 Start Recording
             </button>
-            <button onClick={stopRecording} disabled={!recording}>
+            <button className="recording-button" onClick={stopRecording} disabled={!recording}>
                 Stop Recording
             </button>
-            <button onClick={toggleAudio}>
+            <button className={audioEnabled ? 'recording-button' : 'recording-button disabled-button'} onClick={toggleAudio}>
                 {audioEnabled ? 'Disable Audio' : 'Enable Audio'}
             </button>
             {recordedBlob && (
-                <video controls src={URL.createObjectURL(recordedBlob)} />
+                <video controls src={URL.createObjectURL(recordedBlob)} style={{ width: '100%', marginTop: '20px' }} />
             )}
         </div>
     );

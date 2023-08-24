@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import RecordRTC from 'recordrtc';
+import './AudioRecordingComponent.css';
 
 const AudioRecordingComponent = () => {
     const [recording, setRecording] = useState(false);
@@ -32,12 +33,12 @@ const AudioRecordingComponent = () => {
     };
 
     return (
-        <div>
+        <div className="audio-recording-container">
             <h2>Audio Recording</h2>
-            <button onClick={startRecording} disabled={recording}>
+            <button className="recording-button" onClick={startRecording} disabled={recording}>
                 Start Recording
             </button>
-            <button onClick={stopRecording} disabled={!recording}>
+            <button className="recording-button" onClick={stopRecording} disabled={!recording}>
                 Stop Recording
             </button>
             {recordedBlob && (
