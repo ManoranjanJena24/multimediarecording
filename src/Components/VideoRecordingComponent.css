@@ -3,9 +3,14 @@
 .recording-container {
     text-align: center;
     margin: 20px;
-    border: 10px solid #ccc;
+    border: 5px solid #ccc;
     padding: 10px;
     border-radius: 50px;
+}
+
+.recording-container:hover {
+    border-color: #007bff;
+    background-color: rgb(152, 195, 188);
 }
 
 .recording-button {
